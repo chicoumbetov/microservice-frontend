@@ -1,6 +1,13 @@
-import { Action } from ".";
 import { DeleteData, GetData, PostData, PutData } from "../../utils";
 import { landingProducts, productDetails } from "../shpping-slice";
+import {
+  addNewAddress,
+  addToCart,
+  addToWishlist,
+  placeOrder,
+  removeFromCart,
+  removeFromWishlist,
+} from "../user-slice";
 
 export const onGetProducts = (payload) => async (dispatch) => {
   try {
@@ -32,7 +39,8 @@ export const onAddToWishlist = (_id) => async (dispatch) => {
       _id,
     });
 
-    dispatch({ type: Action.ADD_TO_WISHLIST, payload: response.data });
+    dispatch(addToWishlist(response.data));
+    // dispatch({ type: Action.ADD_TO_WISHLIST, payload: response.data });
   } catch (err) {
     console.log(err);
   }
@@ -42,7 +50,8 @@ export const onRemoveFromWishlist = (_id) => async (dispatch) => {
   try {
     const response = await DeleteData("/wishlist/" + _id);
 
-    dispatch({ type: Action.REMOVE_FROM_WISHLIST, payload: response.data });
+    dispatch(removeFromWishlist(response.data));
+    // dispatch({ type: Action.REMOVE_FROM_WISHLIST, payload: response.data });
   } catch (err) {
     console.log(err);
   }
@@ -59,7 +68,8 @@ export const onAddToCart =
         qty,
       });
 
-      dispatch({ type: Action.ADD_TO_CART, payload: response.data });
+      dispatch(addToCart(response.data));
+      // dispatch({ type: Action.ADD_TO_CART, payload: response.data });
     } catch (err) {
       console.log(err);
     }
@@ -69,7 +79,8 @@ export const onRemoveFromCart = (_id) => async (dispatch) => {
   try {
     const response = await DeleteData("/cart/" + _id);
 
-    dispatch({ type: Action.REMOVE_FROM_CART, payload: response.data });
+    dispatch(removeFromCart(response.data));
+    // dispatch({ type: Action.REMOVE_FROM_CART, payload: response.data });
   } catch (err) {
     console.log(err);
   }
@@ -85,8 +96,8 @@ export const onCreateAddress =
         city,
         country,
       });
-
-      dispatch({ type: Action.ADDED_NEW_ADDRESS, payload: response.data });
+      dispatch(addNewAddress(response.data));
+      // dispatch({ type: Action.ADDED_NEW_ADDRESS, payload: response.data });
     } catch (err) {
       console.log(err);
     }
@@ -101,8 +112,8 @@ export const onPlaceOrder =
       });
 
       console.log(response.data, "ORDER");
-
-      dispatch({ type: Action.PLACE_ORDER, payload: response.data });
+      dispatch(placeOrder(response.data));
+      // dispatch({ type: Action.PLACE_ORDER, payload: response.data });
     } catch (err) {
       console.log(err);
     }
