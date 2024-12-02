@@ -5,7 +5,7 @@ export const AddressComponent = ({ address }) => {
     return (
       <>
         <div>
-          <span class="badge badge-warning">Default Address</span>
+          <span className="badge badge-warning">Default Address</span>
           <p>{street}</p>
           <span className="">
             {postalCode},{city},{country}
@@ -15,7 +15,7 @@ export const AddressComponent = ({ address }) => {
           <button type="button" className="btn btn-info btn-sm mr-2">
             <i className="fas fa-trash"></i>
           </button>
-          <button type="button" class="btn btn-info btn-sm mr-2">
+          <button type="button" className="btn btn-info btn-sm mr-2">
             <i className="fas fa-edit"></i>
           </button>
         </div>

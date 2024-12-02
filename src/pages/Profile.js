@@ -54,10 +54,11 @@ const Profile = () => {
     if (Array.isArray(cart) && cart.length) {
       return (
         <div>
-          {cart.map((item) => {
+          {cart.map((item, idx) => {
             if (item) {
               return (
                 <CartItem
+                  key={idx}
                   cart={cart}
                   item={item}
                   onAdd={onAdd}
@@ -84,8 +85,14 @@ const Profile = () => {
     if (Array.isArray(wishlist) && wishlist.length) {
       return (
         <div>
-          {wishlist.map((item) => {
-            return <WishItem item={item} onTapRemove={removeFromWishlist} />;
+          {wishlist.map((item, index) => {
+            return (
+              <WishItem
+                key={index}
+                item={item}
+                onTapRemove={removeFromWishlist}
+              />
+            );
           })}
         </div>
       );
@@ -190,60 +197,60 @@ const Profile = () => {
       return (
         <div className="row">
           <form className="m-2 bg-white p-2 mt-3 ml-3 rounded">
-            <div class="form-row">
-              <div class="form-group col-md-6">
+            <div className="form-row">
+              <div className="form-group col-md-6">
                 <label for="inputAddress">Street</label>
                 <input
                   type="text"
                   onChange={(e) => setStreet(e.target.value)}
-                  class="form-control"
+                  className="form-control"
                   id="inputAddress"
                   placeholder="1234 Main St"
                 />
               </div>
-              <div class="form-group col-md-4">
+              <div className="form-group col-md-4">
                 <label for="inputCity">City</label>
                 <input
                   type="text"
                   onChange={(e) => setCity(e.target.value)}
-                  class="form-control"
+                  className="form-control"
                   id="inputCity"
                 />
               </div>
             </div>
 
-            <div class="form-row">
-              <div class="form-group col-md-3">
+            <div className="form-row">
+              <div className="form-group col-md-3">
                 <label for="inputCity">State</label>
                 <input
                   type="text"
                   onChange={(e) => setState(e.target.value)}
-                  class="form-control"
+                  className="form-control"
                   id="inputCity"
                 />
               </div>
-              <div class="form-group col-md-2">
+              <div className="form-group col-md-2">
                 <label for="inputZip">Postal Code</label>
                 <input
                   type="text"
                   onChange={(e) => setPostalCode(e.target.value)}
-                  class="form-control"
+                  className="form-control"
                   id="inputZip"
                 />
               </div>
-              <div class="form-group col-md-2">
+              <div className="form-group col-md-2">
                 <label for="inputZip">Country</label>
                 <input
                   type="text"
                   onChange={(e) => setCountry(e.target.value)}
-                  class="form-control"
+                  className="form-control"
                   id="inputZip"
                 />
               </div>
             </div>
             <div className="row">
               <button
-                class="btn btn-warning ml-auto mr-4"
+                className="btn btn-warning ml-auto mr-4"
                 onClick={() => addNewAddress()}
                 type="button"
               >
