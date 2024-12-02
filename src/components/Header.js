@@ -13,7 +13,6 @@ export const Header = () => {
     // id,
     token,
   } = user;
-  console.log("token :", token);
 
   // const { address, orders } = profile;
 
