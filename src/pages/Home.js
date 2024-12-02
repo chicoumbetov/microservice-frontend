@@ -1,7 +1,6 @@
-import React, { useReducer, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { ProductCard } from "../components/ProductCard";
-import { onSignup, onGetProducts } from "../store/actions";
-import { ProductDetails } from "./ProductDetail";
+import { onGetProducts } from "../store/actions";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 const Home = () => {
@@ -18,10 +17,10 @@ const Home = () => {
   const listOfcategories = () => {
     return (
       <div className="row" aria-label="Basic example">
-        {categories.map((item) => {
+        {categories.map((item, idx) => {
           return (
             <button
-              key={item}
+              key={idx}
               type="button"
               onClick={() => {}}
               className="btn btn-lg m-2"
@@ -40,14 +39,14 @@ const Home = () => {
   };
 
   const listOfProducts = () => {
-    return products.map((item) => {
-      return <ProductCard item={item} />;
+    return products.map((item, index) => {
+      return <ProductCard key={index} item={item} />;
     });
   };
 
   return (
-    <div class="container-fluid p-0">
-      <img src="bg.jpg" class="card-img" alt="..."></img>
+    <div className="container-fluid p-0">
+      <img src="bg.jpg" className="card-img" alt="..."></img>
       <div
         className="container-flud mb-4"
         style={{
@@ -58,7 +57,7 @@ const Home = () => {
           backgroundColor: "#61AB4F",
         }}
       >
-        <div class="row justify-content-center">
+        <div className="row justify-content-center">
           {categories && listOfcategories()}
         </div>
       </div>
