@@ -1,19 +1,23 @@
-import React, { useReducer, useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { onSignup, onLogin, onViewProfile } from "../store/actions";
-import { AddressComponent } from "../components/Address-comp";
-import { Profile } from "./Profile";
+import React, { useEffect, useState } from "react";
+import { onLogin, onViewProfile } from "../store/actions";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { Profile } from "./Profile";
 
 //load Shopping profile
 const Login = () => {
-  const { user, profile } = useAppSelector((state) => state.userReducer);
+  const {
+    user,
+    // profile
+  } = useAppSelector((state) => state.userReducer);
 
   const dispatch = useAppDispatch();
 
-  const { id, token } = user;
+  const {
+    // id,
+    token,
+  } = user;
 
-  const { address, whishlist, orders } = profile;
+  // const { address, whishlist, orders } = profile;
 
   const [isSignup, setSignup] = useState(false);
 
