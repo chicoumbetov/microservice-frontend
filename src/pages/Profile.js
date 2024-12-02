@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import {
-  onRemoveFromWishlist,
-  onViewProfile,
-  onAddToCart,
-  onRemoveFromCart,
-  onCreateAddress,
-  onPlaceOrder,
-} from "../store/actions";
+import React, { useEffect, useState } from "react";
 import { AddressComponent } from "../components/Address-comp";
 import { CartItem } from "../components/Cart-comp";
-import { WishItem } from "../components/Wishlist-comp";
 import { OrderItem } from "../components/Order-comp";
+import { WishItem } from "../components/Wishlist-comp";
+import {
+  onAddToCart,
+  onCreateAddress,
+  onPlaceOrder,
+  onRemoveFromCart,
+  onRemoveFromWishlist,
+  onViewProfile,
+} from "../store/actions";
 
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 
@@ -124,7 +124,7 @@ const Profile = () => {
 
   const onTapPlaceOrder = () => {
     // Perform Payment
-    dispatch(onPlaceOrder({ txnId: "72365ffdds" }));
+    dispatch(onPlaceOrder({ transactionId: "72365ffdds" }));
   };
 
   const viewPlaceOrder = () => {
