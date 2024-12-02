@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 import {
-  onGetProductDetails,
-  onAddToWishlist,
   onAddToCart,
-  onRemoveFromWishlist,
+  onAddToWishlist,
+  onGetProductDetails,
   onRemoveFromCart,
+  onRemoveFromWishlist,
 } from "../store/actions";
 
 const ProductDetails = (props) => {
@@ -28,7 +28,7 @@ const ProductDetails = (props) => {
 
   useEffect(() => {
     if (Array.isArray(cart) && cart.length) {
-      const exist = cart.filter(({ product }, unit) => product._id == _id);
+      const exist = cart.filter(({ product }, unit) => product._id === _id);
       if (exist.length) {
         setCurrentUnit(exist[0].unit);
       }
@@ -68,7 +68,7 @@ const ProductDetails = (props) => {
 
   const checkWishListExistence = () => {
     if (Array.isArray(wishlist) && wishlist.length) {
-      const exist = wishlist.filter((item) => item._id == _id);
+      const exist = wishlist.filter((item) => item._id === _id);
 
       if (exist.length > 0) {
         return (
@@ -109,7 +109,7 @@ const ProductDetails = (props) => {
 
   const checkCartExistence = () => {
     if (Array.isArray(cart) && cart.length) {
-      const exist = cart.filter(({ product }) => product._id == _id);
+      const exist = cart.filter(({ product }) => product._id === _id);
 
       if (exist.length > 0) {
         return (
