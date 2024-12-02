@@ -105,8 +105,8 @@ const Profile = () => {
     if (Array.isArray(orders) && orders.length) {
       return (
         <div>
-          {orders.map((item) => {
-            return <OrderItem item={item} onTapViewMore={() => {}} />;
+          {orders.map((item, idx) => {
+            return <OrderItem key={idx} item={item} onTapViewMore={() => {}} />;
           })}
         </div>
       );

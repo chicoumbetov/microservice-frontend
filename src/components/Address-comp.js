@@ -3,7 +3,7 @@ import React from "react";
 export const AddressComponent = ({ address }) => {
   const addressCard = ({ street, postalCode, city, country }) => {
     return (
-      <div className="col-sm col-lg-4 col-mid-3 bg-white p-2 rounded">
+      <>
         <div>
           <span class="badge badge-warning">Default Address</span>
           <p>{street}</p>
@@ -19,14 +19,21 @@ export const AddressComponent = ({ address }) => {
             <i className="fas fa-edit"></i>
           </button>
         </div>
-      </div>
+      </>
     );
   };
 
   const listOfAddress = () => {
     if (Array.isArray(address)) {
-      return address.map((item) => {
-        return addressCard(item);
+      return address.map((item, idx) => {
+        return (
+          <div
+            key={idx}
+            className="col-sm col-lg-4 col-mid-3 bg-white p-2 rounded"
+          >
+            {addressCard(item)}
+          </div>
+        );
       });
     } else {
       return <p> Address Not available!</p>;
