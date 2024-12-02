@@ -1,11 +1,13 @@
 import { Action } from ".";
 import { DeleteData, GetData, PostData, PutData } from "../../utils";
+import { landingProducts, productDetails } from "../shpping-slice";
 
 export const onGetProducts = (payload) => async (dispatch) => {
   try {
     const response = await GetData("/");
 
-    dispatch({ type: Action.LANDING_PRODUCTS, payload: response.data });
+    dispatch(landingProducts(response.data));
+    // dispatch({ type: Action.LANDING_PRODUCTS, payload: response.data });
   } catch (err) {
     console.log(err);
   }
@@ -15,7 +17,8 @@ export const onGetProductDetails = (id) => async (dispatch) => {
   try {
     const response = await GetData("/" + id);
 
-    dispatch({ type: Action.PRODUCT_DETAILS, payload: response.data });
+    dispatch(productDetails(response.data));
+    // dispatch({ type: Action.PRODUCT_DETAILS, payload: response.data });
   } catch (err) {
     console.log(err);
   }
